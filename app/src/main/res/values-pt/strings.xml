@@ -118,6 +118,9 @@
 
     <!-- Lista de clientes -->
     <string name="btn_bloquear">Bloquear</string>
+    <string name="updateData">Actualizar datos</string>
+    <string name="editProfile">Editar perfil</string>
+    <string name="editPassword">Cambio de contraseña</string>
 
 
     <string name="olvido_pass">¿Olvidó su contraseña?</string>

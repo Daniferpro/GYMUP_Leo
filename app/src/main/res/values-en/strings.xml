@@ -127,6 +127,8 @@
 
     <!-- Lista de clientes -->
     <string name="btn_bloquear">Block</string>
-
+    <string name="updateData">Update data</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="editPassword">Change Password</string>
 
 </resources>

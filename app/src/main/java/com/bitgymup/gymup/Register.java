@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bitgymup.gymup.GymList;
 import com.bitgymup.gymup.R;
@@ -91,21 +92,21 @@ public class Register<userId> extends AppCompatActivity implements AdapterView.O
 
                 selected_spinner = spinner.getSelectedItem().toString();
                 String vUserName = vUserName();
-                //!validateUserName(vUserName)|
-                if (!validateEmail() | !validatePassword()  | !validateName() | !validateLastName()| !validateDocument()) {
+                //  Toast.makeText(getApplicationContext(), "Username: " + vUserName , Toast.LENGTH_LONG).show();
+                if (!validateUserName()| !validateEmail() | !validatePassword()  | !validateName() | !validateLastName()| !validateDocument() | validateUserNameUnique(vUserName)) {
                     Toast.makeText(getApplicationContext(), "Corrija los datos ingresados.", Toast.LENGTH_LONG).show();
                 }else {
                     insertUser();
                     getLastUserId(v);
-                    Toast.makeText(getApplicationContext(), "TA BIEN", Toast.LENGTH_LONG).show();
+                    //  Toast.makeText(getApplicationContext(), "TA BIEN", Toast.LENGTH_LONG).show();
                 }
 
             }
 
-
         });
 
     }
+
 
     private void insertUser() {
 
@@ -113,22 +114,21 @@ public class Register<userId> extends AppCompatActivity implements AdapterView.O
         progreso.setMessage("Cargando...");
         progreso.show();
 
-
-        String url = "http://gymup.zonahosting.net/gymphp/RegistroClientsWS2.php?name=" + etName.getText().toString().trim() +
-                "&surname="   + etSurname.getText().toString().trim() +
-                "&document="  + etDocument.getText().toString().trim() +
-                "&address="   + etAddress.getText().toString().trim() +
-                "&city="      + etCity.getText().toString().trim() +
+        String url = "http://gymup.zonahosting.net/gymphp/RegistroClientsWS2.php?name=" + etName.getText().toString() +
+                "&surname="   + etSurname.getText().toString() +
+                "&document="  + etDocument.getText().toString() +
+                "&address="   + etAddress.getText().toString() +
+                "&city="      + etCity.getText().toString() +
                 "&birthday="  + selectedDate +
                 "&country="   + etCountry.getText().toString() +
-                "&phone="     + etPhone.getText().toString().trim() +
-                "&email="     + etEmail.getText().toString().trim() +
-                "&mobile="    + etMobile.getText().toString().trim() +
+                "&phone="     + etPhone.getText().toString() +
+                "&email="     + etEmail.getText().toString() +
+                "&mobile="    + etMobile.getText().toString() +
                 "&gender="    + selected_spinner +
-                "&height="    + etHeight.getText().toString().trim() +
-                "&weight="    + etWeight.getText().toString().trim() +
-                "&cusername=" + etcUsername.getText().toString().trim() +
-                "&cpassword=" + etcPassword.getText().toString().trim();
+                "&height="    + etHeight.getText().toString() +
+                "&weight="    + etWeight.getText().toString() +
+                "&cusername=" + etcUsername.getText().toString() +
+                "&cpassword=" + etcPassword.getText().toString();
 
         url = url.replace(" ", "%20");
 
@@ -184,6 +184,7 @@ public class Register<userId> extends AppCompatActivity implements AdapterView.O
 
 
     }
+
     //para el Spinner
     @Override
     public void onItemSelected(AdapterView<?> adapter, View view, int position, long l) {
@@ -199,7 +200,7 @@ public class Register<userId> extends AppCompatActivity implements AdapterView.O
 
 
     private String vUserDocument() {
-        etDocument = findViewById(R.id.etDocument);
+        etDocument = findViewById(R.id.etDocumentEdit);
         return etDocument.getText().toString();
     }
     private String vUserName() {
@@ -356,7 +357,7 @@ public class Register<userId> extends AppCompatActivity implements AdapterView.O
         }
     }
 
-    private boolean validateUserName(String vUserName) {
+    private boolean validateUserNameUnique(String vUserName) {
         String url="http://gymup.zonahosting.net/gymphp/UsernameExistsWS.php?newname=";
         //   Toast.makeText(getApplicationContext(), vUserName.trim(), Toast.LENGTH_LONG).show();
         final Boolean[] exists = {false};
@@ -370,10 +371,11 @@ public class Register<userId> extends AppCompatActivity implements AdapterView.O
                     String id = jsonObject.optString("id");
                     // Toast.makeText(getApplicationContext(), id.trim(), Toast.LENGTH_LONG).show();
                     if (id.equals("")){
-                        exists[0]=true;
-
+                        exists[0] = true;
+                        etcUsername.setError(null);
+                        //  Toast.makeText(getApplicationContext(), "nombre disponible", Toast.LENGTH_LONG).show();
                     }else{
-                        exists[0]=false;
+                        exists[0] = false;
                         etcUsername.setError("El nombre de usuario no está disponible.");
                     }
 
