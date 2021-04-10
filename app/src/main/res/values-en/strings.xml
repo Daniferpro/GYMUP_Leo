@@ -125,5 +125,8 @@
     <string name="TodoslosCampos">All fields are required.</string>
     <!-- End Reservation -->
 
+    <!-- Lista de clientes -->
+    <string name="btn_bloquear">Block</string>
+
 
 </resources>

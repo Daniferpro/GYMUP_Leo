@@ -31,6 +31,7 @@
         <activity android:name=".admin.AdminHealth"/>
         <activity android:name=".admin.AdminAgenda" />
         <activity android:name=".admin.AdminOffers" />
+        <activity android:name=".admin.AdminUserDetail"></activity>
         <activity android:name=".admin.AdminUsers" />
         <activity android:name=".admin.AdminAddUser" />
         <activity android:name=".admin.AdminNews" />

@@ -116,6 +116,9 @@
     <string name="guardarReserva">Guardar Reserva</string>
     <!-- End Reservation -->
 
+    <!-- Lista de clientes -->
+    <string name="btn_bloquear">Bloquear</string>
+
 
     <string name="olvido_pass">¿Olvidó su contraseña?</string>
     <string name="recuperar_contrasena">Recuperar contraseña</string>

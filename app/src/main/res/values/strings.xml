@@ -126,6 +126,8 @@
     <string name="TodoslosCampos">Todos los campos son requeridos.</string>
     <!-- End Reservation -->
 
+    <!-- Lista de clientes -->
+    <string name="btn_bloquear">Bloquear</string>
 
 
 
