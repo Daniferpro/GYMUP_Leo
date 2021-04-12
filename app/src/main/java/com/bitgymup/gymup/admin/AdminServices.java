@@ -58,7 +58,7 @@ public class AdminServices extends AppCompatActivity {
         services_desc = (EditText) findViewById(R.id.services_desc);
         gimnasio_nombre  = (TextView) findViewById(R.id.gimnasio_nombre);
 
-        String [] opciones = {"Zumba","Yoga","Crossfit","Funcional","OpenBox","Pilates","Musculacion","Natacion"};
+        String [] opciones = {"Zumba","Yoga","Crossfit","Funcional","OpenBox","Pilates","Maquinas","Natacion"};
         ArrayAdapter<String> adapter  = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opciones);
         services_name.setAdapter(adapter);
         username = getUserLogin("username");
